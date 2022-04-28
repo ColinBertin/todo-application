@@ -1,17 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import axios from 'axios';
-
-class TodoForm extends React.component {
+import axios from 'axios'
+class TodoForm extends React.Component {
   constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.titleRef = React.createRef();
+    super(props)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.titleRef = React.createRef()
   }
 
-  handleSubmit(event) {
-    event.preventDefault()
+  handleSubmit(e) {
+    e.preventDefault()
     axios
       .post('/api/v1/todo_items', {
         todo_item: {
@@ -26,7 +25,7 @@ class TodoForm extends React.component {
       .catch(error => {
         console.log(error)
       })
-    event.target.reset()
+    e.target.reset()
   }
 
   render() {
@@ -58,5 +57,5 @@ class TodoForm extends React.component {
 export default TodoForm
 
 TodoForm.propTypes = {
-  createTodoItem: PropTypes.func.isRequired
+  createTodoItem: PropTypes.func.isRequired,
 }
